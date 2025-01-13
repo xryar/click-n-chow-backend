@@ -7,7 +7,7 @@
         </div>
 
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Laravel has wonderful documentation covering every aspect of the framework. Whether you're new to the framework or have previous experience, we recommend reading all of the documentation from beginning to end.
+            This Menu allows admins to view, edit, and delete food data easily. Display a complete list of foods with basic information and manage efficiently.
         </p>
     </div>
 
