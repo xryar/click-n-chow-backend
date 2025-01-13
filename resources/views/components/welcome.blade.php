@@ -43,7 +43,7 @@
         </div>
 
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            This menu allows Admin to view and edit their personal information, such as name, email, and profile picture. Admins can easily update their details to keep their information up-to-date and manage account preferences directly.
+            This Menu allows Admin to view and edit their personal information, such as name, email, and profile picture. Admins can easily update their details to keep their information up-to-date and manage account preferences directly.
         </p>
     </div>
 </div>
