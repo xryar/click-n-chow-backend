@@ -53,17 +53,27 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        return view('users.edit', [
+            'item' => $user
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(UserRequest $request, User $user)
     {
-        //
+        $data = $request->all();
+
+        if($request->file('profile_picture_path')) {
+            $data['profile_photo_path'] = $request->file('profile_photo_path')->store('assets/user', 'public');
+        }
+
+        $user->update($data);
+
+        return redirect()->route('users.index');
     }
 
     /**
