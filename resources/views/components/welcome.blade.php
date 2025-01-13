@@ -2,7 +2,7 @@
     <div>
         <div class="flex items-center">
             <h2 class="ms-3 text-xl font-semibold text-gray-900">
-                <a href="#">Food</a>
+                <a href="/dashboard/food">Food</a>
             </h2>
         </div>
 
@@ -14,7 +14,7 @@
     <div>
         <div class="flex items-center">
             <h2 class="ms-3 text-xl font-semibold text-gray-900">
-                <a href="#">Transaction</a>
+                <a href="/dashboard/transactions">Transaction</a>
             </h2>
         </div>
 
@@ -26,24 +26,24 @@
     <div>
         <div class="flex items-center">
             <h2 class="ms-3 text-xl font-semibold text-gray-900">
-                <a href="#">Users</a>
+                <a href="/dashboard/users">Users</a>
             </h2>
         </div>
 
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Laravel Jetstream is built with Tailwind, an amazing utility first CSS framework that doesn't get in your way. You'll be amazed how easily you can build and maintain fresh, modern designs with this wonderful framework at your fingertips.
+            This Menu allows admins to view, edit, and delete user data easily. Display a complete list of users with basic information and manage accounts efficiently.
         </p>
     </div>
 
     <div>
         <div class="flex items-center">
             <h2 class="ms-3 text-xl font-semibold text-gray-900">
-                <a href="#">Profile</a>
+                <a href="/user/profile">Profile</a>
             </h2>
         </div>
 
         <p class="mt-4 text-gray-500 text-sm leading-relaxed">
-            Authentication and registration views are included with Laravel Jetstream, as well as support for user email verification and resetting forgotten passwords. So, you're free to get started with what matters most: building your application.
+            This menu allows Admin to view and edit their personal information, such as name, email, and profile picture. Admins can easily update their details to keep their information up-to-date and manage account preferences directly.
         </p>
     </div>
 </div>
