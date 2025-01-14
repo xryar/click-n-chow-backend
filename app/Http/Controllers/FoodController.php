@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FoodRequest;
 use App\Models\Food;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,7 @@ class FoodController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(FoodRequest $request)
     {
         $data = $request->all();
 
@@ -54,22 +55,34 @@ class FoodController extends Controller
      */
     public function edit(Food $food)
     {
-        //
+        return view('food.edit', [
+            'item' => $food
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Food $food)
+    public function update(FoodRequest $request, Food $food)
     {
-        //
+        $data = $request->all();
+
+        if ($request->file('picturePath')) {
+            $data['picturePath'] = $request->file('picturePath')->store('assets/food', 'public');
+        }
+
+        $food->update($data);
+
+        return redirect()->route('food.index');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Food $food)
     {
-        //
+        $food->delete();
+
+        return redirect()->route('food.index');
     }
 }
