@@ -19,39 +19,34 @@ class UserController extends Controller
 
     public function login(Request $request) {
         try {
-            //validasi input
-            $request-> validate([
+            $request->validate([
                 'email' => 'email|required',
                 'password' => 'required'
             ]);
 
-            // cek credential login
             $credentials = request(['email', 'password']);
             if (!Auth::attempt($credentials)) {
                 return ResponseFormatter::error([
                     'message' => 'Unauthorized'
-                ], 'Authentication Failed', 500);
+                ],'Authentication Failed', 500);
             }
 
-            //jika hash tidak sesuai maka beri error
-            $user = User::where('email', request('email'))->first();
-            if (!Hash::check($request->password, $user->password, [])) {
+            $user = User::where('email', $request->email)->first();
+            if ( ! Hash::check($request->password, $user->password, [])) {
                 throw new \Exception('Invalid Credentials');
             }
 
-            //jika berhasil login
             $tokenResult = $user->createToken('authToken')->plainTextToken;
             return ResponseFormatter::success([
                 'access_token' => $tokenResult,
                 'token_type' => 'Bearer',
                 'user' => $user
-            ], 'Authenticated');
-
+            ],'Authenticated');
         } catch (Exception $error) {
             return ResponseFormatter::error([
                 'message' => 'Something went wrong',
-                'error' => $error
-            ], 'Authentication Failed', 500);
+                'error' => $error,
+            ],'Authentication Failed', 500);
         }
     }
 
@@ -66,11 +61,11 @@ class UserController extends Controller
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'password' => Hash::make($request->password),
                 'address' => $request->address,
                 'houseNumber' => $request->houseNumber,
                 'phoneNumber' => $request->phoneNumber,
                 'city' => $request->city,
-                'password' => Hash::make($request->password),
             ]);
 
             $user = User::where('email', $request->email)->first();
