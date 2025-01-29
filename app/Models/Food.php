@@ -32,6 +32,6 @@ class Food extends Model
     }
 
     public function getPicturePathAttribute() {
-        return config('app.url') . Storage::url($this->attributes['picturePath']);
+        return config('app.url') . '/storage/' . $this->attributes['picturePath'];
     }
 }
